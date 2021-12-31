@@ -1,4 +1,4 @@
-export default class Fruit {
+class Fruit {
 
   constructor(randomFruit) {
     this.sliced = false;
@@ -7,13 +7,15 @@ export default class Fruit {
   }
 
   throw() {
-
+    console.log("Throwing fruit!");
   }
 
   render() {
     //draw fruit (this) on the canvas
   }
 }
+
+module.exports = Fruit;
 
 // const image = new Image();
 //   image.onload = drawImageActualSize;

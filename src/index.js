@@ -1,7 +1,7 @@
-import Game from "./scripts/game";
+import Game from "./scripts/game.js";
 // import Fruit from "./scripts/fruit";
-
-document.addEventListener("DOMContentLoaded", () => {
+let document = window.document;
+document.addEventListener("DOMContentLoaded", function(){
   const canvas = document.querySelector("#canvas");
   canvas.width = 1300;
   canvas.height = 525;
@@ -18,8 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function drawImageActualSize() {
     // canvas.width = 1300;
     // canvas.height = 525;
-    console.log(this.naturalWidth);
-    console.log(this.naturalHeight);
     // ctx.drawImage(this, 0, 0, 150, 150);
   }
 })

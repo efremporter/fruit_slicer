@@ -1,4 +1,5 @@
-import Fruit from "./fruit.js"
+const Fruit = require("./fruit.js");
+// import Fruit from "./fruit.js";
 
 export default class Game {
   constructor(ctx) {
@@ -13,8 +14,8 @@ export default class Game {
     let fruit = this.generateRandomFruit();
     setTimeout(() => {
       fruit.throw();
-      play();
-    }, 5000);
+      this.play();
+    }, 2000);
   }
 
   generateRandomFruit() {
@@ -25,22 +26,29 @@ export default class Game {
   }
 
   play() {
-    while (!this.gameOver()) {
-      let time = this.getTimeout();
-      let fruit = this.generateRandomFruit();
-      setTimeout( () => {
+    // console.log("Playing!");
+    let time = this.getTimeout();
+    setInterval( () => {
+      if (!this.gameOver()) {
+        let fruit = this.generateRandomFruit();
         fruit.throw();
-      }, time)
-    }
+      }
+    }, 1000)
   }
 
   getTimeout() {
     if (this.level === 1) {
       return 5000; 
     } else {
-      5000 - (50 * this.level);
+      return 5000 - (400 * this.level);
     }
-    console.log(getTimeout());
+  }
+
+  nextLevel() {
+  if (this.fruits.length > 3) { 
+    this.level += 1;
+    console.log("Leveled up. Now on level " + this.level);
+  }
   }
 
   
@@ -49,4 +57,3 @@ export default class Game {
   }
 }
 
-console.log("hi");
