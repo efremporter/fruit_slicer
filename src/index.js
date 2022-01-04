@@ -1,5 +1,7 @@
 import Game from "./scripts/game.js";
 // import Fruit from "./scripts/fruit";
+// import MovingObject from "./scripts/moving_object";
+
 let document = window.document;
 document.addEventListener("DOMContentLoaded", function(){
   const canvas = document.querySelector("#canvas");
@@ -8,19 +10,22 @@ document.addEventListener("DOMContentLoaded", function(){
   const ctx = canvas.getContext('2d');
   // let background = document.getElementById("background");
   // ctx.drawImage(background, 50, 5);
+  let game = new Game(ctx);
+  game.start();
 
   const image = new Image();
   image.onload = drawImageActualSize;
   image.src = 'src/assets/apple/apple.png';
-  let game = new Game(ctx);
-  game.start();
-
   function drawImageActualSize() {
     // canvas.width = 1300;
     // canvas.height = 525;
-    // ctx.drawImage(this, 0, 0, 150, 150);
+    ctx.drawImage(this, 0, 0, 150, 150);
   }
 })
+
+function animate() {
+  
+}
 
 // const canvas = document.getElementById('canvas');
 // const ctx = canvas.getContext('2d');
