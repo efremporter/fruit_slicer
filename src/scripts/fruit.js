@@ -3,20 +3,37 @@ import MovingObject from "./moving_object";
 
 export default class Fruit extends MovingObject {
 
-  constructor(x, dx, y, dy) {
-    super(x, dx, y, dy);
-    this.sliced = false;
+  constructor(x, dx, y, dy, sliced) {
+    super(x, dx, y, dy, sliced);
     this.type = this.generateRandomFruit()
   }
 
   generateRandomFruit() {
     const fruits = ['apple', 'banana', 'coconut', 'kiwi', 'lemon', 'lime', 'mango', 'orange', 'peach', 'pineapple', 'pomegranate', 'watermelon'];
-    //should I add bomb to fruits, or make a bomb class?
+    // return fruits[11]
     return fruits[Math.floor(Math.random() * fruits.length)];
   }
 
-  throw() {
-    console.log("Throwing fruit!");
+  getSize() {
+    if (this.type === "apple" && this.sliced) return [170, 170];
+    if (this.type === "banana" && this.sliced) return [200, 200];
+    if (this.type === "coconut" && this.sliced) return [210, 210];
+    if (this.type === "coconut") return [160, 160];
+    if (this.type === "kiwi" && this.sliced) return [170, 170];
+    if (this.type === "lemon" && this.sliced) return [170, 170];
+    if (this.type === "lime" && this.sliced) return [170, 170];
+    if (this.type === "lime") return [160, 160];
+    if (this.type === "mango") return [190, 190];
+    if (this.type === "orange") return [170, 170];
+    if (this.type === "peach" && this.sliced) return [200, 200];
+    if (this.type === "peach") return [180, 180];
+    if (this.type === "pineapple" && this.sliced) return [280, 280];
+    if (this.type === "pineapple") return [240, 240];
+    if (this.type === "pomegranate" && this.sliced) return [300, 300];
+    if (this.type === "pomegranate") return [215, 215];
+    if (this.type === "watermelon" && this.sliced) return [250, 250];
+    if (this.type === "watermelon") return [175, 175];
+    return [150, 150];
   }
 
 

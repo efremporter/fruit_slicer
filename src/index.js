@@ -8,24 +8,11 @@ document.addEventListener("DOMContentLoaded", function(){
   canvas.width = 1300;
   canvas.height = 525;
   const ctx = canvas.getContext('2d');
-  // let background = document.getElementById("background");
-  // ctx.drawImage(background, 50, 5);
   let game = new Game(ctx);
+  game.drawBackground();
   game.start();
-
-  const image = new Image();
-  image.onload = drawImageActualSize;
-  image.src = 'src/assets/apple/apple.png';
-  function drawImageActualSize() {
-    // canvas.width = 1300;
-    // canvas.height = 525;
-    ctx.drawImage(this, 0, 0, 150, 150);
-  }
 })
 
-function animate() {
-  
-}
 
 // const canvas = document.getElementById('canvas');
 // const ctx = canvas.getContext('2d');

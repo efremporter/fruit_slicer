@@ -8,69 +8,137 @@ export default class Game {
     this.fruits = [];
     this.score = 0;
     this.lives = 3;
+    this.fruitDeath = 0;
+    this.sliced = [];
   }
 
   start() {
-    let fruit = new Fruit(this.getX, 1, 150, 1)
+    let fruit = this.getFruit();
     this.fruits.push(fruit);
-    // this.drawFruit(fruit);
     setTimeout(() => {
-      fruit.throw();
       this.play();
     }, 1000);
   }
 
   play() {
+    let document = window.document;
+    document.querySelector('#canvas').addEventListener("mousemove", (e) => {
+      console.log(e.clientX);
+      this.fruits.forEach( (fruit) => {
+        if (e.clientX >= fruit.x - 20 && e.clientX <= fruit.x + 20 && !fruit.sliced) {// && (e.clientY >= fruit.y - 500 && e.clientY <= fruit.y + 500)) {
+          fruit.sliced = true;
+          this.addPoints();
+          this.fruitDeath += 1;
+          this.sliced.push(fruit);
+          if (this.score >= 15) {
+            console.log(this.fruitDeath);
+            console.log(this.sliced);
+            // debugger
+          }
+        }
+      })
+    })
     //trying to change the time of the setInterval to be dynamic based on the level
     let time = this.getTimeout();
-    this.fruits.forEach( (fruit) => {
-      if (this.onScreen(fruit) && !fruit.sliced) {
-        // this.drawFruit(fruit);
-      }
-    })
     this.animate();
     setInterval( () => {
       // clearInterval();
       if (!this.gameOver()) {
-        this.checkLevel();
-        let fruit = new Fruit(this.getX, 999, 150, 1);
+        let fruit = this.getFruit();
+        while (this.fruits.includes(fruit)) fruit = this.getFruit();
         this.fruits.push(fruit);
-        fruit.throw();
       }
-    }, 2000)
+    }, 3000)
+  }
+
+  getFruit() {
+    let dy = -1 * Math.floor(Math.random() * 2)
+    console.log(dy);
+    return new Fruit(this.getX(), this.getDx(), 525, -33 + dy);
   }
 
   getX() {
-    return Math.floor(Math.random() * 1300)
+    return Math.floor(Math.random() * 1200)
+  }
+
+  getDx() {
+    if (Math.floor(Math.random() * 1) === 1) return 7;
+    return -7;
+  }
+
+  addPoints() {
+    this.score += 5;
   }
 
   //How to code physics of gravity
   //Click dissapear first, then drag
 
+  hitTop(object) {
+    if (object.y <= -1000) return true;
+    return false;
+  }
+
   draw(object) {
-    console.log("Drawing Fruit!");
-    let x = this.getX();
-    let y = Math.floor(Math.random() * 900)
+    if (this.hitTop(object)) {
+      object.dy = -object.dy;
+    } else {
+      object.dy += 1;
+    }
+      const image = new Image();
+      image.onload = drawImageActualSize;
+      image.src = object.picture();
+      let that = this;
+      function drawImageActualSize() {
+        that.ctx.drawImage(this, object.x, object.y, object.getSize()[0], object.getSize()[1]);
+        // debugger
+    }
+  }
+
+  drawBackground() {
     const image = new Image();
     image.onload = drawImageActualSize;
-    image.src = object.picture();
+    image.src = "/src/assets/background.png";
     let that = this;
     function drawImageActualSize() {
-      that.ctx.drawImage(this, x, y, 150, 150);
+      that.ctx.drawImage(this, 0, 0, 1300, 525);
     }
   }
 
   drawFruits() {
     this.fruits.forEach( (fruit) => {
-      this.draw(fruit);
+      if (this.onScreen(fruit)) {
+        this.draw(fruit);
+      } else {
+        this.remove(fruit);
+      }
     })
     // this.draw(this.fruits[0]);
   }
 
+  checkIfSliced() {
+    document.querySelector('#canvas').addEventListener("click", () => {
+      console.log("clicked");
+    })
+  }
+
+  remove(fruit) {
+    let i = this.fruits.indexOf(fruit);
+    this.fruits.splice(i, 1);
+  }
+
   animate() {
-    requestAnimationFrame(this.animate.bind(this));
+    // let z = this.fruits[0].x;
+    // this.ctx.clearRect(0, 0, 1300, 525);
+    // this.ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    // this.fillRect(100, 0, 1300, 525);
+    // this.ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    // this.ctx.fillRect(0, 0, 1300, 525);
+    this.drawBackground();
     this.drawFruits();
     this.move();
+    this.checkLevel();
+    this.checkIfSliced();
+    requestAnimationFrame(this.animate.bind(this));
     // setTimeout(() => {this.ctx.clearRect(0, 0, 1300, 525)}, 100);
   }
 
@@ -81,7 +149,6 @@ export default class Game {
   }
 
   getTimeout() {
-    console.log(this.level);
     if (this.level === 2) return 5000;
     if (this.level === 1) {
       return 1000; 
@@ -91,7 +158,7 @@ export default class Game {
   }
 
   onScreen(object) {
-
+    return object.y <= 525;
   }
 
   checkLevel() {
@@ -102,7 +169,7 @@ export default class Game {
 
   nextLevel() {
     this.level += 1;
-    console.log("Leveled up. Now on level " + this.level);
+    // console.log("Leveled up. Now on level " + this.level);
   }
 
   gameOver() {
@@ -117,4 +184,6 @@ export default class Game {
   }
 }
 
-
+//drag event
+//mouse drag instead of slice
+//slice/sword animation on cut
