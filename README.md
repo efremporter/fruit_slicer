@@ -1,6 +1,8 @@
 # fruit_slicer
 App Academy JavaScript Project
 
+Link to Fruit Slicer: https://efremporter.github.io/fruit_slicer/
+
 Hey, you! Yeah, you! Come here! Hurry. We don't have much time. The fruits... they've gotten stronger. They'll take over any minute now. Here, take this sword. Get to work!
 
 Behold! A new and improved version of the fan favorite, "Fruit Ninja." In Fruit Slicer, players will be taking on the role of a ninja, tasked with saving the world from the evil fruits that are raining down on the planet.
