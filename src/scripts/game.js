@@ -132,7 +132,7 @@ export default class Game {
   drawBackground() {
     const image = new Image();
     image.onload = drawImageActualSize;
-    image.src = "/src/assets/background.png";
+    image.src = "src/assets/background.png";
     let that = this;
     function drawImageActualSize() {
       that.ctx.drawImage(this, 0, 0, 1300, 525);
