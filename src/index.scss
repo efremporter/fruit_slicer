@@ -33,7 +33,9 @@ body {
 }
 
 .button {
-  display: inline;
+  position: absolute;
+  top: 620px;
+  // display: inline;
   width: 100px;
   height: 40px;
   background-color: transparent;
@@ -131,18 +133,18 @@ body {
 }
 
 .lives {
-  // display: inline;
+  // position: absolute;
   padding-left: 1310px;
   padding-top: 530px;
 }
 
 .level {
-  // display: inline;
+  // position: absolute;
   padding-left: 1310px;
 }
 
 .score {
-  // display: inline;
+  // position: absolute;
   padding-left: 1310px;
 }
 

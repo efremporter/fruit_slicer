@@ -1,3 +1,222 @@
-canvas{background-color:#301212;margin-top:90px;padding-left:0;padding-right:0;margin-left:auto;margin-right:auto;display:block;background-color:transparent;position:absolute;top:0px;left:70px}#background{display:none;position:relative;top:0;left:0;margin-top:50px;padding-left:0;padding-right:0;margin-left:auto;margin-right:auto;display:block;width:1300px;height:525px}body{background-color:#ffecc6}.button{display:inline;width:100px;height:40px;background-color:transparent;font-family:"Roboto",sans-serif;margin-top:5px;margin-left:670px}.modal{position:fixed;top:50%;left:50%;transform:translate(-50%, -50%) scale(0);transition:200ms ease-in-out;border:1px solid #000;border-radius:10px;z-index:10;background-color:#ffecc6;width:500px;max-width:80%}.modal.active{transform:translate(-50%, -50%) scale(1)}.modal-header{padding:10px 15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #000}.modal-header .title{font-family:"Roboto",sans-serif;font-size:1.25rem;font-weight:bold}.modal-header .close-button{cursor:pointer;border:none;outline:none;background:none;font-size:1.25rem;font-weight:bold}.modal-body{line-height:25px;font-family:"Spline Sans",sans-serif;font-weight:bold;padding:10px 15px}#overlay{position:fixed;opacity:0;transition:200ms ease-in-out;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,.5);pointer-events:none}#overlay.active{opacity:1;pointer-events:all}.logo{display:inline;height:auto}.logo .github{padding-left:100px;width:150px}.logo .linkedin{width:150px;padding-left:300px}#logo{padding-top:0px;margin-top:0px;padding-left:300px;display:inline;width:300px}.lives{padding-left:1310px;padding-top:530px}.level{padding-left:1310px}.score{padding-left:1310px}.button2{display:none}.modal2{position:fixed;top:50%;left:50%;transform:translate(-50%, -50%) scale(0);transition:200ms ease-in-out;border:1px solid blakc;border-radius:10px;z-index:10;background-color:#ffecc6;width:500px;max-width:80%}.modal2.active{transform:translate(-50%, -50%) scale(1)}.modal2-header{padding:10px 15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #000}.modal2-header .title2{font-size:1.25rem;font-weight:bold}.modal2-header .close-button2{cursor:pointer;border:none;outline:none;background:none;font-size:1.25rem;font-weight:bold}.modal2-body{line-height:25px;font-family:"Spline Sans",sans-serif;font-weight:bold;padding:10px 15px}#overlay2{position:fixed;opacity:0;transition:200ms ease-in-out;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,.5);pointer-events:none}#overlay2.active{opacity:1;pointer-events:all}.restart{background-color:transparent;font-family:"Roboto",sans-serif;margin-top:5px;margin-left:205px}
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+canvas {
+  background-color: #301212;
+  margin-top: 90px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-color: transparent;
+  position: absolute;
+  top: 0px;
+  left: 70px;
+}
 
-/*# sourceMappingURL=main.css.map*/
+#background {
+  display: none;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-top: 50px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 1300px;
+  height: 525px;
+}
+
+body {
+  background-color: #ffecc6;
+}
+
+.button {
+  position: absolute;
+  top: 620px;
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
+  font-family: "Roboto", sans-serif;
+  margin-top: 5px;
+  margin-left: 670px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: #ffecc6;
+  width: 500px;
+  max-width: 80%;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.modal-header .title {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-header .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-body {
+  line-height: 25px;
+  font-family: "Spline Sans", sans-serif;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.logo {
+  display: inline;
+  height: auto;
+}
+
+.logo .github {
+  padding-left: 100px;
+  width: 150px;
+}
+
+.logo .linkedin {
+  width: 150px;
+  padding-left: 300px;
+}
+
+#logo {
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-left: 300px;
+  display: inline;
+  width: 300px;
+}
+
+.lives {
+  padding-left: 1310px;
+  padding-top: 530px;
+}
+
+.level {
+  padding-left: 1310px;
+}
+
+.score {
+  padding-left: 1310px;
+}
+
+.button2 {
+  display: none;
+}
+
+.modal2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid blakc;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: #ffecc6;
+  width: 500px;
+  max-width: 80%;
+}
+
+.modal2.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal2-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.modal2-header .title2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal2-header .close-button2 {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal2-body {
+  line-height: 25px;
+  font-family: "Spline Sans", sans-serif;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+
+#overlay2 {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay2.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.restart {
+  background-color: transparent;
+  font-family: "Roboto", sans-serif;
+  margin-top: 5px;
+  margin-left: 205px;
+}
