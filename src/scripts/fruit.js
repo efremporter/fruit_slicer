@@ -3,8 +3,8 @@ import MovingObject from "./moving_object";
 
 export default class Fruit extends MovingObject {
 
-  constructor(x, dx, y, dy, sliced) {
-    super(x, dx, y, dy, sliced);
+  constructor(x, dx, y, dy) {
+    super(x, dx, y, dy);
     this.type = this.generateRandomFruit()
   }
 

@@ -1,6 +1,6 @@
 export default class MovingObject {
 
-  constructor(x, dx, y, dy, sliced) {
+  constructor(x, dx, y, dy) {
     if ((x < 430 && dx < 0) || (x > 750 && dx > 0)) dx *= -1;
     this.x = x;
     this.dx = dx;

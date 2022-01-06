@@ -8,11 +8,47 @@ document.addEventListener("DOMContentLoaded", function(){
   canvas.width = 1300;
   canvas.height = 525;
   const ctx = canvas.getContext('2d');
+  const openModalButtons = document.querySelectorAll('[data-modal-target]');
+  const closeModalButtons = document.querySelectorAll('[data-close-button]');
+  const overlay = document.getElementById('overlay');
+
+  openModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = document.querySelector(button.dataset.modalTarget);
+      openModal(modal);
+    })
+  })
+
+  overlay.addEventListener('click', () => {
+    const modals = document.querySelectorAll('.modal.active');
+    modals.forEach(modal => {
+      closeModal(modal);
+    })
+  })
+
+  closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = button.closest('.modal');
+      closeModal(modal);
+    })
+  })
+
+  function openModal(modal) {
+    if (modal == null) return;
+    modal.classList.add('active');
+    overlay.classList.add('active');
+  }
+
+  function closeModal(modal) {
+    if (modal == null) return;
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+  }
+
   let game = new Game(ctx);
   game.drawBackground();
   game.start();
 })
-
 
 // const canvas = document.getElementById('canvas');
 // const ctx = canvas.getContext('2d');

@@ -23,38 +23,46 @@ export default class Game {
   play() {
     let document = window.document;
     document.querySelector('#canvas').addEventListener("mousemove", (e) => {
-      console.log(e.clientX);
       this.fruits.forEach( (fruit) => {
-        if (e.clientX >= fruit.x - 20 && e.clientX <= fruit.x + 20 && !fruit.sliced) {// && (e.clientY >= fruit.y - 500 && e.clientY <= fruit.y + 500)) {
+        if (e.clientX >= fruit.x - 20 && e.clientX <= fruit.x + 20 && !fruit.sliced) {// && (e.clientY >= fruit.y - 500 && e.clientY <= fruit.y +500)) {
           fruit.sliced = true;
           this.addPoints();
           this.fruitDeath += 1;
           this.sliced.push(fruit);
           if (this.score >= 15) {
-            console.log(this.fruitDeath);
-            console.log(this.sliced);
             // debugger
           }
         }
       })
     })
     //trying to change the time of the setInterval to be dynamic based on the level
-    let time = this.getTimeout();
     this.animate();
+    this.throwFruits();
+  }
+
+  throwFruits() {
     setInterval( () => {
-      // clearInterval();
-      if (!this.gameOver()) {
-        let fruit = this.getFruit();
-        while (this.fruits.includes(fruit)) fruit = this.getFruit();
-        this.fruits.push(fruit);
+      if (this.checkLives()) {
+        if (this.level === 1) {
+          let fruit = this.getFruit();
+          this.fruits.push(fruit);
+        } else {
+          let counter = 0;
+          while (counter < this.level) {
+            let fruit = this.getFruit();
+            this.fruits.push(fruit);
+            counter++;
+          }
+        }
       }
     }, 3000)
   }
 
   getFruit() {
-    let dy = -1 * Math.floor(Math.random() * 2)
-    console.log(dy);
-    return new Fruit(this.getX(), this.getDx(), 525, -33 + dy);
+    let dy = -1 * Math.floor(Math.random() * 0.5)
+    let fruit = new Fruit(this.getX(), this.getDx(), 525, -21 + dy);
+    while (this.fruits.includes(fruit)) this.getFruit();
+    return fruit;
   }
 
   getX() {
@@ -62,12 +70,14 @@ export default class Game {
   }
 
   getDx() {
-    if (Math.floor(Math.random() * 1) === 1) return 7;
-    return -7;
+    if (Math.floor(Math.random() * 1) === 1) return 6;
+    return -6;
   }
 
   addPoints() {
     this.score += 5;
+    console.log(this.score)
+    this.checkLevel();
   }
 
   //How to code physics of gravity
@@ -82,7 +92,7 @@ export default class Game {
     if (this.hitTop(object)) {
       object.dy = -object.dy;
     } else {
-      object.dy += 1;
+      object.dy += .4;
     }
       const image = new Image();
       image.onload = drawImageActualSize;
@@ -105,6 +115,7 @@ export default class Game {
   }
 
   drawFruits() {
+    this.move();
     this.fruits.forEach( (fruit) => {
       if (this.onScreen(fruit)) {
         this.draw(fruit);
@@ -117,7 +128,7 @@ export default class Game {
 
   checkIfSliced() {
     document.querySelector('#canvas').addEventListener("click", () => {
-      console.log("clicked");
+
     })
   }
 
@@ -134,11 +145,10 @@ export default class Game {
     // this.ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
     // this.ctx.fillRect(0, 0, 1300, 525);
     this.drawBackground();
-    this.drawFruits();
-    this.move();
-    this.checkLevel();
+    this.checkIfHitBottom();
     this.checkIfSliced();
-    requestAnimationFrame(this.animate.bind(this));
+    this.drawFruits();
+    if (!this.gameOver()) requestAnimationFrame(this.animate.bind(this));
     // setTimeout(() => {this.ctx.clearRect(0, 0, 1300, 525)}, 100);
   }
 
@@ -148,38 +158,53 @@ export default class Game {
     })
   }
 
-  getTimeout() {
-    if (this.level === 2) return 5000;
-    if (this.level === 1) {
-      return 1000; 
-    } else {
-      return 5000 - (400 * this.level);
-    }
+  onScreen(object) {
+    return object.y < 561;
   }
 
-  onScreen(object) {
-    return object.y <= 525;
+  checkLives() {
+    return !this.lives <= 0;
   }
 
   checkLevel() {
-    if (this.fruits.length === 2) {
+    if (this.score === 25) {
+      this.nextLevel();
+    } else if (this.score === 70) {
+        this.nextLevel();
+    } else if (this.score % 200 === 0) {
       this.nextLevel();
     }
   }
 
   nextLevel() {
     this.level += 1;
-    // console.log("Leveled up. Now on level " + this.level);
+    this.lives += 1;
+    console.log(this.lives)
+    console.log("Leveled up. Now on level " + this.level);
   }
 
   gameOver() {
-    return !this.lives;
+    // console.log(this.score)
+    if (this.lives === 0) this.endScreen();
+    return this.lives <= 0;
+  }
+
+  endScreen() {
+    console.log("Game Over");
   }
 
   checkIfSliced() {
     this.fruits.forEach( (fruit) => {
       // console.log(fruit.sliced)
       return fruit.sliced
+    })
+  }
+
+  checkIfHitBottom() {
+    this.fruits.forEach( (fruit) => {
+      if (fruit.y > 525 && !fruit.sliced) {
+        this.lives -= 1;
+      }
     })
   }
 }
