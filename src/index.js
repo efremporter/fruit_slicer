@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function(){
   })
 
   overlay2.addEventListener('click', () => {
-    const modals2 = document.querySelectorAll('.modal.active');
+    const modals2 = document.querySelectorAll('.modal2.active');
     modals2.forEach(modal2 => {
       closeModal2(modal2);
     })
