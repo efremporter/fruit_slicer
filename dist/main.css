@@ -3,7 +3,7 @@
   \*************************************************************************************************************************************/
 canvas {
   background-color: #301212;
-  margin-top: 70px;
+  margin-top: 90px;
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
@@ -35,9 +35,12 @@ body {
 }
 
 .button {
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
   font-family: "Roboto", sans-serif;
-  margin-top: 600px;
-  margin-left: 1277px;
+  margin-top: 545px;
+  margin-left: 670px;
 }
 
 .modal {
@@ -103,4 +106,28 @@ body {
 #overlay.active {
   opacity: 1;
   pointer-events: all;
+}
+
+.logo {
+  display: inline;
+  height: auto;
+}
+
+.logo .github {
+  padding-top: 5px;
+  padding-left: 100px;
+  width: 150px;
+}
+
+.logo .linkedin {
+  width: 150px;
+  padding-left: 300px;
+}
+
+#logo {
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-left: 300px;
+  display: inline;
+  width: 300px;
 }

@@ -2,12 +2,15 @@ import Game from "./scripts/game.js";
 // import Fruit from "./scripts/fruit";
 // import MovingObject from "./scripts/moving_object";
 
-let document = window.document;
+const document = window.document;
 document.addEventListener("DOMContentLoaded", function(){
   const canvas = document.querySelector("#canvas");
   canvas.width = 1300;
   canvas.height = 525;
   const ctx = canvas.getContext('2d');
+  let game = new Game(ctx);
+  game.drawBackground();
+
   const openModalButtons = document.querySelectorAll('[data-modal-target]');
   const closeModalButtons = document.querySelectorAll('[data-close-button]');
   const overlay = document.getElementById('overlay');
@@ -44,10 +47,35 @@ document.addEventListener("DOMContentLoaded", function(){
     modal.classList.remove('active');
     overlay.classList.remove('active');
   }
+  
+  const playButton = new Image();
+  playButton.onload = drawImageActualSize;
+  playButton.src = 'src/assets/play_button.png';
 
-  let game = new Game(ctx);
-  game.drawBackground();
-  game.start();
+  const clickToPlay = new Image();
+  clickToPlay.onload = drawImageActualSize2;
+  clickToPlay.src = 'src/assets/click_to_play.png';
+
+  function drawImageActualSize() {
+    let that = this;
+    setTimeout( () => {
+      ctx.drawImage(that, 550, 150, 200, 200);
+    }, 0)
+  }
+
+  function drawImageActualSize2() {
+    let that = this;
+    setTimeout( () => {
+      ctx.drawImage(that, 462, -40, 400, 400);
+    }, 0)
+  }
+  let started = false;
+  canvas.addEventListener("click", () => {
+    if (!started) {
+      started = true;
+      game.start();
+    }
+  })
 })
 
 // const canvas = document.getElementById('canvas');

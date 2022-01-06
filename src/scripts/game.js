@@ -61,7 +61,9 @@ export default class Game {
   getFruit() {
     let dy = -1 * Math.floor(Math.random() * 0.5)
     let fruit = new Fruit(this.getX(), this.getDx(), 525, -21 + dy);
-    while (this.fruits.includes(fruit)) this.getFruit();
+    if (this.fruits.includes(fruit)) {
+      fruit = this.getFruit();
+    }
     return fruit;
   }
 
@@ -76,7 +78,6 @@ export default class Game {
 
   addPoints() {
     this.score += 5;
-    console.log(this.score)
     this.checkLevel();
   }
 
@@ -94,13 +95,12 @@ export default class Game {
     } else {
       object.dy += .4;
     }
-      const image = new Image();
-      image.onload = drawImageActualSize;
-      image.src = object.picture();
-      let that = this;
-      function drawImageActualSize() {
-        that.ctx.drawImage(this, object.x, object.y, object.getSize()[0], object.getSize()[1]);
-        // debugger
+    const image = new Image();
+    image.onload = drawImageActualSize;
+    image.src = object.picture();
+    let that = this;
+    function drawImageActualSize() {
+      that.ctx.drawImage(this, object.x, object.y, object.getSize()[0], object.getSize()[1]);
     }
   }
 
@@ -179,7 +179,6 @@ export default class Game {
   nextLevel() {
     this.level += 1;
     this.lives += 1;
-    console.log(this.lives)
     console.log("Leveled up. Now on level " + this.level);
   }
 

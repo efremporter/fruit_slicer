@@ -38,7 +38,7 @@ export default class Fruit extends MovingObject {
 
 
   picture() {
-    if (this.type === 'apple') {if (this.sliced) { return 'src/assets/apple/sliced.png'} else { return 'src/assets/apple/apple.png';}} 
+    if (this.type === 'apple') {if (this.sliced) { return 'src/assets/apple/sliced.png'} else { return 'src/assets/apple/apple.png'}} 
     else if (this.type === 'banana') {if (this.sliced) { return 'src/assets/banana/sliced.png'} else { return 'src/assets/banana/banana.png'}} 
     else if (this.type === 'coconut') {if (this.sliced) { return 'src/assets/coconut/sliced.png'} else { return 'src/assets/coconut/coconut.png'}}
     else if (this.type === 'kiwi') {if (this.sliced) { return 'src/assets/kiwi/sliced.png'} else { return 'src/assets/kiwi/kiwi.png'}}  
