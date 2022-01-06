@@ -1,6 +1,4 @@
 import Game from "./scripts/game.js";
-// import Fruit from "./scripts/fruit";
-// import MovingObject from "./scripts/moving_object";
 
 const document = window.document;
 document.addEventListener("DOMContentLoaded", function(){

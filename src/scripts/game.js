@@ -1,4 +1,3 @@
-// const Fruit = require("./fruit.js");
 import Fruit from "./fruit.js";
 
 export default class Game {
@@ -49,18 +48,16 @@ export default class Game {
     let document = window.document;
     document.querySelector('#canvas').addEventListener("mousemove", (e) => {
       this.fruits.forEach( (fruit) => {
-        if (e.clientX >= fruit.x - 20 && e.clientX <= fruit.x + 20 && !fruit.sliced) {// && (e.clientY >= fruit.y - 500 && e.clientY <= fruit.y +500)) {
+        if (e.clientX >= fruit.x - 20 && e.clientX <= fruit.x + 20 && !fruit.sliced) {
           fruit.sliced = true;
           this.addPoints();
           this.fruitDeath += 1;
           this.sliced.push(fruit);
           if (this.score >= 15) {
-            // debugger
           }
         }
       })
     })
-    //trying to change the time of the setInterval to be dynamic based on the level
     this.animate();
     this.throwFruits();
   }
@@ -106,9 +103,6 @@ export default class Game {
     this.checkLevel();
   }
 
-  //How to code physics of gravity
-  //Click dissapear first, then drag
-
   hitTop(object) {
     if (object.y <= -1000) return true;
     return false;
@@ -148,7 +142,6 @@ export default class Game {
         this.remove(fruit);
       }
     })
-    // this.draw(this.fruits[0]);
   }
 
   checkIfSliced() {
@@ -163,19 +156,12 @@ export default class Game {
   }
 
   animate() {
-    // let z = this.fruits[0].x;
-    // this.ctx.clearRect(0, 0, 1300, 525);
-    // this.ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-    // this.fillRect(100, 0, 1300, 525);
-    // this.ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-    // this.ctx.fillRect(0, 0, 1300, 525);
     this.drawBackground();
     this.display();
     this.checkIfHitBottom();
     this.checkIfSliced();
     this.drawFruits();
     if (!this.gameOver()) requestAnimationFrame(this.animate.bind(this));
-    // setTimeout(() => {this.ctx.clearRect(0, 0, 1300, 525)}, 100);
   }
 
   move() {
@@ -283,7 +269,3 @@ export default class Game {
     })
   }
 }
-
-//drag event
-//mouse drag instead of slice
-//slice/sword animation on cut
