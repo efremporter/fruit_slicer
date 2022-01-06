@@ -33,11 +33,12 @@ body {
 }
 
 .button {
+  display: inline;
   width: 100px;
   height: 40px;
   background-color: transparent;
   font-family: 'Roboto', sans-serif;
-  margin-top: 545px;
+  margin-top: 5px;
   margin-left: 670px;
 }
 
@@ -112,7 +113,6 @@ body {
 }
 
 .logo .github {
-  padding-top: 5px;
   padding-left: 100px;
   width: 150px;
 }
@@ -128,4 +128,95 @@ body {
   padding-left: 300px;
   display: inline;
   width: 300px;
+}
+
+.lives {
+  // display: inline;
+  padding-left: 1310px;
+  padding-top: 530px;
+}
+
+.level {
+  // display: inline;
+  padding-left: 1310px;
+}
+
+.score {
+  // display: inline;
+  padding-left: 1310px;
+}
+
+.button2 {
+  display: none;
+}
+
+.modal2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid blakc;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: rgb(255, 236, 198);
+  width: 500px;
+  max-width: 80%
+}
+
+.modal2.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal2-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.modal2-header .title2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal2-header .close-button2 {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal2-body {
+  line-height: 25px;
+  font-family: 'Spline Sans', sans-serif;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+
+#overlay2 {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  pointer-events: none;
+}
+
+#overlay2.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.restart {
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 5px;
+  margin-left: 205px;
 }

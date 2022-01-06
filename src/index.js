@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
   canvas.width = 1300;
   canvas.height = 525;
   const ctx = canvas.getContext('2d');
-  let game = new Game(ctx);
+  const game = new Game(ctx);
   game.drawBackground();
 
   const openModalButtons = document.querySelectorAll('[data-modal-target]');
@@ -47,6 +47,43 @@ document.addEventListener("DOMContentLoaded", function(){
     modal.classList.remove('active');
     overlay.classList.remove('active');
   }
+
+  const openModalButtons2 = document.querySelectorAll('[data-modal-target2]');
+  const closeModalButtons2 = document.querySelectorAll('[data-close-button2]');
+  const overlay2 = document.getElementById('overlay2');
+
+  openModalButtons2.forEach(button => {
+    button.addEventListener('click', () => {
+      const modal2 = document.querySelector(button.dataset.modalTarget2);
+      openModal2(modal2);
+    })
+  })
+
+  closeModalButtons2.forEach(button => {
+    button.addEventListener('click', () => {
+      const modal2 = button.closest('.modal2');
+      closeModal2(modal2);
+    })
+  })
+
+  overlay2.addEventListener('click', () => {
+    const modals2 = document.querySelectorAll('.modal.active');
+    modals2.forEach(modal2 => {
+      closeModal2(modal2);
+    })
+  })
+
+  function openModal2(modal2) {
+    if (modal2 == null) return;
+    modal2.classList.add('active');
+    overlay2.classList.add('active');
+  }
+
+  function closeModal2(modal2) {
+    if (modal2 == null) return;
+    modal2.classList.remove('active');
+    overlay2.classList.remove('active');
+  }
   
   const playButton = new Image();
   playButton.onload = drawImageActualSize;
@@ -60,20 +97,21 @@ document.addEventListener("DOMContentLoaded", function(){
     let that = this;
     setTimeout( () => {
       ctx.drawImage(that, 550, 150, 200, 200);
-    }, 0)
+    }, 2)
   }
 
   function drawImageActualSize2() {
     let that = this;
     setTimeout( () => {
       ctx.drawImage(that, 462, -40, 400, 400);
-    }, 0)
+    }, 2)
   }
   let started = false;
   canvas.addEventListener("click", () => {
     if (!started) {
       started = true;
-      game.start();
+      game.start();       
+      game.drawBackground();
     }
   })
 })

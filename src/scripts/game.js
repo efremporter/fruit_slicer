@@ -13,11 +13,36 @@ export default class Game {
   }
 
   start() {
+    this.display();
     let fruit = this.getFruit();
     this.fruits.push(fruit);
     setTimeout(() => {
       this.play();
     }, 1000);
+  }
+
+  display() {
+    this.displayLives();
+    this.displayLevel();
+    this.displayScore();
+  }
+
+  displayLives() {
+    const document = window.document;
+    let livesDiv = document.querySelector('.lives')
+    livesDiv.innerText = 'Lives: ' + this.lives;
+  }
+
+  displayLevel() {
+    const document = window.document;
+    let levelDiv = document.querySelector('.level')
+    levelDiv.innerText = 'Level: ' + this.level;
+  }
+
+  displayScore() {
+    const document = window.document;
+    let scoreDiv = document.querySelector('.score')
+    scoreDiv.innerText = 'Score: ' + this.score;
   }
 
   play() {
@@ -145,6 +170,7 @@ export default class Game {
     // this.ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
     // this.ctx.fillRect(0, 0, 1300, 525);
     this.drawBackground();
+    this.display();
     this.checkIfHitBottom();
     this.checkIfSliced();
     this.drawFruits();
@@ -179,22 +205,72 @@ export default class Game {
   nextLevel() {
     this.level += 1;
     this.lives += 1;
-    console.log("Leveled up. Now on level " + this.level);
   }
 
   gameOver() {
-    // console.log(this.score)
     if (this.lives === 0) this.endScreen();
     return this.lives <= 0;
   }
 
   endScreen() {
-    console.log("Game Over");
+    this.display();
+
+    const openModalButtons2 = document.querySelectorAll('[data-modal-target2]');
+    openModalButtons2.forEach(button => {
+      button.click();
+      this.addStats()
+    })
+  }
+
+  addStats() {
+    const body = document.querySelector('.modal2-body');
+
+    const score = document.createElement('div');
+    score.innerText = "Your final score was: " + this.score;
+    body.appendChild(score);
+
+    const level = document.createElement('div');
+    level.innerText = "Your reached level: " + this.level;
+    body.appendChild(level);
+    this.addRestartButton(body);
+  }
+
+  addRestartButton(body) {
+    const restartButton = document.createElement('button');
+    restartButton.innerText = "Restart";
+    restartButton.classList = "restart";
+    body.appendChild(restartButton);
+    restartButton.addEventListener('click', () => {
+      this.clearBody();
+      this.closeModals();
+      this.newGame();
+    })
+  }
+
+  clearBody() {
+    const body = document.querySelector('.modal2-body');
+    body.innerText = "";
+  }
+
+  closeModals() {
+    const closeModalButtons2 = document.querySelectorAll('[data-close-button2]');
+    closeModalButtons2.forEach(button => {
+      button.click();
+    })
+  }
+
+  newGame() {
+    const canvas = document.querySelector("#canvas");
+    canvas.width = 1300;
+    canvas.height = 525;
+    const ctx = canvas.getContext('2d');
+    const game = new Game(ctx);
+    game.drawBackground();
+    game.start();
   }
 
   checkIfSliced() {
     this.fruits.forEach( (fruit) => {
-      // console.log(fruit.sliced)
       return fruit.sliced
     })
   }

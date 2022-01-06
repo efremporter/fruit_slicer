@@ -11,11 +11,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Spline+Sans:wght@300&display=swap" rel="stylesheet">
-  <a class="logo" href="https://github.com/efremporter">
+  <a class="logo" href="https://github.com/efremporter" target="_blank">
     <img class="github" src="/src/assets/github.png">
   </a>
   <img class="logo" id="logo" src="/src/assets/logo.png">
-  <a class="logo" href="https://www.linkedin.com/in/efrem-porter-550b0b224/">
+  <a class="logo" href="https://www.linkedin.com/in/efrem-porter-550b0b224/" target="_blank">
     <img class="linkedin" src="/src/assets/linked_in.png">
   </a>
   <script src="dist/main.js"></script>
@@ -27,12 +27,15 @@
     <!-- <img id="apple" src="/src/assets/apple/apple.png"> -->
     <canvas id="canvas">
     </canvas>
+    <div class="lives"></div>
+    <div class="score"></div>
+    <div class="level"></div>
   </div>
   <button class="button" data-modal-target="#modal">Instructions</button>
   <div class="modal" id="modal">
     <div class="modal-header">
       <div class="title">Instructions</div>
-      <button data-close-button class="close-buton">&times;</button>
+      <button data-close-button class="close-button">&times;</button>
     </div> 
     <div class="modal-body">
       <div>1. Drag cursor across fruits to slice</div>
@@ -42,21 +45,14 @@
     </div>
   </div>
   <div id="overlay"></div>
+  <button class="button2"data-modal-target2="#modal2">Open Modal</button>
+  <div class="modal2" id="modal2">
+    <div class="modal2-header">
+      <div class="title2">Game Over</div>
+      <button data-close-button2 class="close-button2">&times;</button>  
+    </div>
+    <div class="modal2-body"></div>
+  </div>
+  <div id="overlay2"></div>
 </body>
 </html>
-
-
-<!--  <button class="button" data-modal-target="#modal">Instructions</button>
-      <div class="modal" id="modal">
-        <div class="modal-header">
-          <div class="title">Instructions</div>
-          <button data-close-button class="close-buton">&times;</button>
-        </div> 
-        <div class="modal-body">
-          <div>1. Drag cursor across fruits to slice</div>
-          <div>2. As level increases, so does number of fruits</div>
-          <div>3. If 3 fruits reach the ground, game over!</div>
-          <div>4. If you beat a level, you get an extra life</div>
-        </div>
-      </div>
-      <div id="overlay"></div> -->
