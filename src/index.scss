@@ -71,6 +71,10 @@ body {
   font-weight: bold;
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
 .modal-header .close-button {
   cursor: pointer; 
   border: none;
@@ -110,21 +114,31 @@ body {
 }
 
 .logo .github {
-  padding-left: 100px;
+  position: absolute;
+  left: 5%;
+  top: 25px;
+  // padding-left: 100px;
   width: 150px;
+  cursor: pointer;
 }
 
 .logo .linkedin {
+  position: absolute;
+  right: 5%;
+  top: 25px;
   width: 150px;
-  padding-left: 300px;
+  // padding-left: 300px;
+  cursor: pointer;
 }
 
 #logo {
-  padding-top: 0px;
-  margin-top: 0px;
-  padding-left: 300px;
-  display: inline;
   width: 300px;
+}
+
+.fruit-slicer {
+  width: 100%;
+  position: relative;
+  text-align: center;
 }
 
 .lives {
