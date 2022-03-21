@@ -1,28 +1,24 @@
 canvas {
   background-color: rgb(48, 18, 18);
-  margin-top: 90px;
+  position: relative;
   padding-left: 0;
   padding-right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   display: block;
   background-color: transparent;
-  position: absolute;
-  top: 0px;
-  left: 70px;
 
 }
 
 #background {
   display: none;
   position: relative;
-  top: 0;
-  left: 0;
-  margin-top: 50px;
-  padding-left: 0;
-  padding-right: 0;
+  // top: 0;
+  // left: 0;
+  // margin-top: 50px;
+  // padding-left: 0;
+  // padding-right: 0;
   margin-left: auto;
-  margin-right: auto;
+  // margin-right: auto;
   display: block;
   width: 1300px;
   height: 525px;
@@ -108,7 +104,7 @@ body {
   pointer-events: all;
 }
 
-.logo {
+.logo { 
   display: inline;
   height: auto;
 }
@@ -133,7 +129,6 @@ body {
 
 .lives {
   padding-left: 1310px;
-  padding-top: 530px;
 }
 
 .level {
