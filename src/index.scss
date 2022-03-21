@@ -117,8 +117,11 @@ body {
   position: absolute;
   left: 5%;
   top: 25px;
-  // padding-left: 100px;
   width: 150px;
+  z-index: 1;
+}
+
+.github:hover {
   cursor: pointer;
 }
 
@@ -127,8 +130,6 @@ body {
   right: 5%;
   top: 25px;
   width: 150px;
-  // padding-left: 300px;
-  cursor: pointer;
 }
 
 #logo {
