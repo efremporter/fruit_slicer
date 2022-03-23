@@ -25,14 +25,25 @@ body {
 }
 
 .button {
-  position: absolute;
-  top: 620px;
+  position: relative;
+  top: 15px;
   width: 100px;
   height: 40px;
   background-color: transparent;
   font-family: "Roboto", sans-serif;
-  margin-top: 5px;
-  margin-left: 670px;
+}
+
+.header {
+  position: relative;
+  width: 1300px;
+  margin: auto;
+}
+
+.button-div {
+  position: relative;
+  text-align: center;
+  margin: auto;
+  width: 1300px;
 }
 
 .modal {
@@ -69,6 +80,7 @@ body {
 
 .button:hover {
   cursor: pointer;
+  background-color: #eedcb7;
 }
 
 .modal-header .close-button {
@@ -109,9 +121,9 @@ body {
   height: auto;
 }
 
-.logo .github {
+.github {
   position: absolute;
-  left: 5%;
+  left: 0;
   top: 25px;
   width: 150px;
   z-index: 1;
@@ -121,9 +133,9 @@ body {
   cursor: pointer;
 }
 
-.logo .linkedin {
+.linkedin {
   position: absolute;
-  right: 5%;
+  right: 0;
   top: 25px;
   width: 150px;
 }
@@ -139,15 +151,21 @@ body {
 }
 
 .lives {
-  padding-left: 1310px;
+  position: absolute;
+  right: 0;
+  top: 5px;
 }
 
 .level {
-  padding-left: 1310px;
+  position: absolute;
+  right: 0;
+  top: 25px;
 }
 
 .score {
-  padding-left: 1310px;
+  position: absolute;
+  right: 0;
+  top: 45px;
 }
 
 .button2 {
